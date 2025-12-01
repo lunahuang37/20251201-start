@@ -10,7 +10,6 @@
 """
 
 import pandas as pd
-import numpy as np
 import re
 import os
 
@@ -51,7 +50,7 @@ def score_motor_performance(comment):
         r'\bnot\s+fast\b', r'\bslow\b', r'\bnot\s+near\s+as\s+strong\b',
         r'\bnot\s+strong\b', r'wasn\'t\s+(even\s+)?very\s+fast',  # 處理 wasn't (even) very fast
         r'\bnot\s+impressed\b', r'\bdisappointing\s+power\b',
-        r'wasn\'t.*fast', r'not\s+near\s+as\s+strong'  # 更寬鬆的否定匹配
+        r'wasn\'t.*fast'  # 更寬鬆的否定匹配
     ]
     for pattern in negative:
         if re.search(pattern, comment_lower):
@@ -121,9 +120,9 @@ def score_power_type(comment):
         r'battery\s+lasts\s+forever', r'long-lasting\s+rechargeable',
         r'love\s+the\s+usb\s+rechargeable', r'amazing.*rechargeable',
         r'rechargeable.*amazing', r'love\s+the\s+rechargeable',
-        r'charge\s+lasts\s+a\s+long\s+time', r'long\s+battery\s+life',
-        r'very\s+happy\s+with\s+battery', r'lasts\s+a\s+long\s+time',
-        r'love\s+the\s+usb', r'usb\s+rechargeable\s+feature'
+        r'long\s+battery\s+life', r'very\s+happy\s+with\s+battery',
+        r'lasts\s+a\s+long\s+time', r'love\s+the\s+usb',
+        r'usb\s+rechargeable\s+feature'
     ]
     for pattern in extremely_positive:
         if re.search(pattern, comment_lower):
@@ -143,7 +142,7 @@ def score_power_type(comment):
         r'battery\s+dies\s+quickly', r'drains\s+batteries', r'short\s+battery\s+life',
         r'battery\s+drains\s+quickly', r'batteries\s+die\s+quickly',
         r'drains\s+batteries\s+like\s+crazy', r'have\s+to\s+charge.*every\s+other\s+day',
-        r'constantly\s+buying\s+batteries', r'short\s+battery\s+life',
+        r'constantly\s+buying\s+batteries',
         r'dies\s+quickly', r'frustrating.*battery', r'battery.*frustrating'
     ]
     for pattern in negative:
